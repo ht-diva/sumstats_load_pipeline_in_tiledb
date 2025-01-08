@@ -1,0 +1,30 @@
+from snakemake.utils import min_version
+from pathlib import Path
+
+##### set minimum snakemake version #####
+min_version("8.4.1")
+
+
+configfile: "config/config.yaml"
+
+
+include: "rules/common.smk"
+
+
+if config.get("run").get("liftover"):
+
+    include: "rules/liftover_harmonization.smk"
+
+else:
+
+    include: "rules/harmonization.smk"
+
+
+include: "rules/ingestion.smk"
+
+
+rule all:
+    input:
+        get_final_output(),
+    resources:
+        runtime=3,
