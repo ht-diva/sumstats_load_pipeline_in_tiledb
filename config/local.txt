@@ -1,2 +1,2 @@
-../data/ukb-a-1-chr1.vcf.gz
-../data/ukb-a-2-chr1.vcf.gz
+data/ukb-a-1.vcf.gz
+data/ukb-a-2.vcf.gz

@@ -19,6 +19,9 @@ steps:
     gl_params:
       n_cores: *cores
       normalize: True
+      fixid_args:
+        fixid: True
+        forcefixid: True
   infer_build: # see https://cloufield.github.io/gwaslab/InferBuild/
     params:
       run: True
@@ -52,10 +55,14 @@ steps:
           method: "gzip"
           compresslevel: 1
           mtime: 1
+      float_formats:
+        BETA: '{:.5f}'
+        SE: '{:.5f}'
+        MLOG10P: '{:.5f}'
+        EAF: '{:.5f}'
 
-
-# Filename transformation, e.g.: seq.3007.7.gwas.regenie.gz
-filename_mask: [ True, True, True, False, False, False]
+# Filename transformation, e.g.: ukb-a-1.vcf.gz
+filename_mask: [ True, False, False]
 filename_sep: '.'
 
 # IO

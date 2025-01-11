@@ -2,7 +2,7 @@ rule liftover:
     input:
         sumstats=get_sumstats,
     output:
-        vcf=temp(ws_path("temp/{dataid}/{dataid}_liftover.vcf.gz")),
+        vcf=temp(ws_path("temp/{dataid}/{dataid}.liftover.vcf.gz")),
     container:
         "docker://ghcr.io/ht-diva/containers/bcftools:e06c15"
     params:
@@ -20,17 +20,19 @@ rule harmonize_sumstats:
         sumstats=rules.liftover.output.vcf,
     output:
         ws_path("outputs/{dataid}/{dataid}.gwaslab.tsv.gz"),
-    conda:
-        "../scripts/gwaspipe/environment.yml"
+    container:
+        "docker://ghcr.io/ht-diva/gwaspipe:b82410"
     params:
         format=config.get("params").get("harmonize_sumstats").get("input_format"),
         config_file=config.get("params").get("harmonize_sumstats").get("config_file"),
         output_path=config.get("workspace_path"),
+        study_label=lambda wc: wc.dataid.split(".")[0].replace("ukb", "UKB"),
     resources:
         runtime=lambda wc, attempt: attempt * 60,
     shell:
-        "python workflow/scripts/gwaspipe/src/gwaspipe.py "
+        "gwaspipe "
         "-f {params.format} "
         "-c {params.config_file} "
         "-i {input.sumstats} "
-        "-o {params.output_path}"
+        "-o {params.output_path} "
+        "--study_label {params.study_label}"
