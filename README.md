@@ -1,5 +1,5 @@
 # Sumstats load pipeline
-A load pipeline that uses TileDB as the storage infrastructure for the summary statistics.
+A load pipeline using TileDB as summary statistics storage infrastructure.
 
 ## Workflow example
 
