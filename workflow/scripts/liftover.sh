@@ -1,12 +1,11 @@
 #!/bin/bash
 
 INPUT=$1
-HG37FASTA=$2
+LOG=$(awk -F ".vcf.gz" '{print $1}' <<< $INPUT)
 HG38FASTA=$3
 CHAINFILE=$4
-OUTPUT_VCF=$5
-THREADS=$6
+OUTPUT_VCF=ukb-b-11908-liftover.vcf.gz
 
-bcftools norm --threads ${THREADS} -f ${HG37FASTA} -c s -Ou ${INPUT} -- | \
-bcftools +liftover --threads ${THREADS} --no-version -Ou -- -s ${HG37FASTA} -f ${HG38FASTA} -c ${CHAINFILE} | \
-bcftools sort -Oz -o ${OUTPUT_VCF}
+CrossMap vcf $CHAINFILE ukb-b-11908.vcf.gz $HG38FASTA $INPUT 2> $LOG.log
+
+
