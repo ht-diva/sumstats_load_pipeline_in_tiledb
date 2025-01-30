@@ -7,7 +7,7 @@ rule liftover:
         "ghcr.io/ht-diva/containers/crossmap:0.7.3"
     params:
         hg38=config.get("hg38_fasta_file"),
-        log=config.get("logfile_liftover.log"),
+        log=config.get("logfile_liftover"),
         chain_file=config.get("chain_file"),
     resources:
         runtime=lambda wc, attempt: attempt * 30,
