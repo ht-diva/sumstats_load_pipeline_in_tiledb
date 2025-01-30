@@ -4,7 +4,7 @@ rule liftover:
     output:
         vcf=temp(ws_path("temp/{dataid}/{dataid}.liftover.vcf.gz")),
     container:
-        "k8s-registry.fht.org/gau/build:crossmap"
+        "ghcr.io/ht-diva/containers/crossmap:0.7.3"
     params:
         hg37=config.get("hg37_fasta_file"),
         hg38=config.get("hg38_fasta_file"),
