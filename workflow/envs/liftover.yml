@@ -1,6 +1,0 @@
-name: crossmap
-channels:
-  - conda-forge
-  - bioconda
-dependencies:
-  - Crossmap=0.7.3
