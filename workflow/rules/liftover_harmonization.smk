@@ -4,15 +4,14 @@ rule liftover:
     output:
         vcf=temp(ws_path("temp/{dataid}/{dataid}.liftover.vcf.gz")),
     container:
-        "docker://ghcr.io/ht-diva/containers/bcftools:e06c15"
+        "ghcr.io/ht-diva/containers/crossmap:0.7.3"
     params:
-        hg37=config.get("hg37_fasta_file"),
         hg38=config.get("hg38_fasta_file"),
         chain_file=config.get("chain_file"),
     resources:
         runtime=lambda wc, attempt: attempt * 30,
     shell:
-        "workflow/scripts/liftover.sh {input.sumstats} {params.hg37} {params.hg38} {params.chain_file} {output.vcf} {threads}"
+        "workflow/scripts/liftover.sh {input.sumstats} {params.hg38} {params.chain_file} {output.vcf}"
 
 
 rule harmonize_sumstats:
