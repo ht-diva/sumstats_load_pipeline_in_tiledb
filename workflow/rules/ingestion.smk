@@ -18,7 +18,7 @@ rule ingest_dataset:
         rules.checksum.output,
     output:
         touch(ws_path("outputs/{dataid}/{dataid}.done")),
-    conda:
-        "../envs/gwasstudio.yml"
+    container:
+        "docker://ghcr.io/ht-diva/gwasstudio:b6353b"
     shell:
         "python py"
