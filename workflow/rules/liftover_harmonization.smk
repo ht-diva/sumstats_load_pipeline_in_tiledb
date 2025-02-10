@@ -2,13 +2,13 @@ rule liftover:
     input:
         sumstats=get_sumstats,
     output:
-        vcf=temp(ws_path("temp/{dataid}/{dataid}.liftover.vcf.gz")),
+        temp(ws_path("temp/{dataid}/{dataid}.liftover.vcf.gz")),
     container:
         "docker://ghcr.io/ht-diva/containers/crossmap:0.7.3"
     params:
         hg38=config.get("hg38_fasta_file"),
         chain_file=config.get("chain_file"),
-        vcf=subpath(output.vcf, strip_suffix=".gz"),
+        vcf=lambda wildcards, output: output[0][:-3],
     resources:
         runtime=lambda wc, attempt: attempt * 30,
     shell:
