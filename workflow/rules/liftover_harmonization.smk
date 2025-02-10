@@ -8,10 +8,11 @@ rule liftover:
     params:
         hg38=config.get("hg38_fasta_file"),
         chain_file=config.get("chain_file"),
+        vcf=subpath(output.vcf, strip_suffix=".gz"),
     resources:
         runtime=lambda wc, attempt: attempt * 30,
     shell:
-        "workflow/scripts/liftover.sh {input.sumstats} {params.hg38} {params.chain_file} {output.vcf}"
+        "workflow/scripts/liftover.sh {input.sumstats} {params.hg38} {params.chain_file} {params.vcf}"
 
 
 rule harmonize_sumstats:
