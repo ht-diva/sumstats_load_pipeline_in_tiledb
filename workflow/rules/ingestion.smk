@@ -9,7 +9,7 @@ rule ingest_metadata:
     resources:
         runtime=lambda wc, attempt: attempt * 60,
     shell:
-        "gwasstudio "
+        "gwasstudio"
 
 
 rule ingest_dataset:
@@ -21,7 +21,7 @@ rule ingest_dataset:
     container:
         "docker://ghcr.io/ht-diva/gwasstudio:b6353b"
     shell:
-        "gwasstudio \
+        """gwasstudio \
         --minimum_workers 4 \
         --maximum_workers 8 \
         --memory_workers 10 \
@@ -29,4 +29,4 @@ rule ingest_dataset:
         ingest \
         --uri \
         --multiple-input {input.harmonized}
-        "
+        """

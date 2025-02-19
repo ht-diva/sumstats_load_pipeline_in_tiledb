@@ -1,2 +1,1 @@
-data/ukb-a-1.vcf.gz
-data/ukb-a-2.vcf.gz
+data/ukb-b-9696.vcf.gz
