@@ -14,11 +14,19 @@ rule ingest_metadata:
 
 rule ingest_dataset:
     input:
-        rules.harmonize_sumstats.output,
-        rules.checksum.output,
+        harmonized=rules.harmonize_sumstats.output,
+        checksum=rules.checksum.output,
     output:
         touch(ws_path("outputs/{dataid}/{dataid}.done")),
-    conda:
-        "../envs/gwasstudio.yml"
+    container:
+        "docker://ghcr.io/ht-diva/gwasstudio:b6353b"
     shell:
-        "python py"
+        "gwasstudio \
+        --minimum_workers 4 \
+        --maximum_workers 8 \
+        --memory_workers 10 \
+        --cpu_workers 6 \
+        ingest \
+        --uri \
+        --multiple-input {input.harmonized}
+        "
