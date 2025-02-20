@@ -1,5 +1,5 @@
 run:
-  liftover: True
+  liftover: False
 
 # paths
 workspace_path: 'results'
