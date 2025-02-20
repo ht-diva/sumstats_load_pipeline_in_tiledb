@@ -5,7 +5,7 @@ HN=$(shell hostname | sed "s/[0-9]//g")
 
 
 ifeq ($(HN),$(filter $(HN),cnode gnode hnode))
-  CONDA_ENV_NAME=/exchange/healthds/software/envs/snakemake
+  CONDA_ENV_NAME=/group/soranzo/bruno.ariano/snakemake_env
 else
   CONDA_ENV_NAME=snakemake
 endif
