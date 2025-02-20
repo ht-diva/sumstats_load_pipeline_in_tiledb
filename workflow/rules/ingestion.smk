@@ -20,13 +20,11 @@ rule ingest_dataset:
         touch(ws_path("outputs/{dataid}/{dataid}.done")),
     container:
         "docker://ghcr.io/ht-diva/gwasstudio:b6353b"
+    params:
+        uri_path=config.get("uri")
     shell:
         """gwasstudio \
-        --minimum_workers 4 \
-        --maximum_workers 8 \
-        --memory_workers 10 \
-        --cpu_workers 6 \
         ingest \
-        --uri \
+        --uri {params.uri_path}\
         --multiple-input {input.harmonized}
         """
