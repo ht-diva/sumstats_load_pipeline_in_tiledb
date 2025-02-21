@@ -1,0 +1,10 @@
+project	study	category	file_path	source_id	build	population	total_samples	total_cases	total_controls	trait_desc	trait_tissue
+UKB	d	GWAS	data/ukb-d/ukb-d-XVIII_MISCFINDINGS.vcf.gz	ukb-d-XVIII_MISCFINDINGS	GRCh37	European	361194	97602	263592	Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified
+UKB	d	GWAS	data/ukb-d/ukb-d-XII_SKIN_SUBCUTAN.vcf.gz	ukb-d-XII_SKIN_SUBCUTAN	GRCh37	European	361194	27074	334120	Diseases of the skin and subcutaneous tissue
+UKB	d	GWAS	data/ukb-d/ukb-d-XV_PREGNANCY_BIRTH.vcf.gz	ukb-d-XV_PREGNANCY_BIRTH	GRCh37	European	361194	11959	349235	Pregnancy, childbirth and the puerperium
+UKB	d	GWAS	data/ukb-d/ukb-d-X_RESPIRATORY.vcf.gz	ukb-d-X_RESPIRATORY	GRCh37	European	361194	25381	335813	Diseases of the respiratory system
+UKB	d	GWAS	data/ukb-d/ukb-d-Z01.vcf.gz	ukb-d-Z01	GRCh37	European	361194	1370	359824	Diagnoses - main ICD10: Z01 Other special examinations and investigations of persons without complaint or reported diagnosis
+UKB	d	GWAS	data/ukb-d/ukb-d-XVII_MALFORMAT_ABNORMAL.vcf.gz	ukb-d-XVII_MALFORMAT_ABNORMAL	GRCh37	European	361194	2121	359073	Congenital malformations, deformations and chromosomal abnormalities
+UKB	d	GWAS	data/ukb-d/ukb-d-XIII_MUSCULOSKELET.vcf.gz	ukb-d-XIII_MUSCULOSKELET	GRCh37	European	361194	77099	284095	Diseases of the musculoskeletal system and connective tissue
+UKB	d	GWAS	data/ukb-d/ukb-d-Z42.vcf.gz	ukb-d-Z42	GRCh37	European	361194	1963	359231	Diagnoses - main ICD10: Z42 Follow-up care involving plastic surgery	plasma
+UKB	d	GWAS	data/ukb-d/ukb-d-XI_DIGESTIVE.vcf.gz	ukb-d-XI_DIGESTIVE	GRCh37	European	361194	115893	245301	Diseases of the digestive system

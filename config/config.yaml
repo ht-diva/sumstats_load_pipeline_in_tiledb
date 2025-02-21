@@ -3,9 +3,9 @@ run:
 
 # paths
 workspace_path: 'results'
-sumstats_path: 'config/local.txt'
+input_file: 'config/example.tsv'
 uri: '~/tiledb'
-metadata_file: 'data/metadata.json'
+
 chain_file: '/group/diangelantonio/public_data/liftOver/hg19ToHg38.over.chain.gz'
 log: 'logfile_liftover'
 hg37_fasta_fai_file: '/group/diangelantonio/public_data/liftOver/human_g1k_v37.fasta.fai'
