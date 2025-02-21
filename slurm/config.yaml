@@ -24,3 +24,12 @@ set-resources:
     liftover:
         mem_mb: 8192 + attempt * 2048
         threads: *cores
+    harmonize_sumstats:
+      mem_mb: 22528 + attempt * 2048
+      threads: *cores
+    ingest_metadata:
+      mem_mb: 8192 + attempt * 2048
+      threads: *cores
+    ingest_dataset:
+      mem_mb: 22528 + attempt * 2048
+      threads: *cores
