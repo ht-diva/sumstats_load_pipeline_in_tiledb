@@ -11,7 +11,7 @@ rule harmonize_sumstats:
         output_path=config.get("workspace_path"),
         study_label=lambda wc: wc.dataid.split(".")[0].replace("ukb", "UKB"),
     resources:
-        runtime=lambda wc, attempt: attempt * 60,
+        runtime=lambda wc, attempt: attempt * 180,
     shell:
         "gwaspipe "
         "-f {params.format} "

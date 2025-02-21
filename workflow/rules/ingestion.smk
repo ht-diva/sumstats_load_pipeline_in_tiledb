@@ -20,6 +20,8 @@ rule ingest_dataset:
         touch(ws_path("outputs/{dataid}/{dataid}.done")),
     container:
         "docker://ghcr.io/ht-diva/gwasstudio:d2c7c7"
+    resources:
+        runtime=lambda wc, attempt: attempt * 60,
     params:
         uri_path=config.get("uri"),
     shell:
