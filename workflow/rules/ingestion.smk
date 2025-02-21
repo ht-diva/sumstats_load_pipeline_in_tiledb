@@ -26,5 +26,5 @@ rule ingest_dataset:
         """gwasstudio \
         ingest \
         --uri {params.uri_path}\
-        --multiple-input {input.harmonized}
+        --single-input {input.harmonized}
         """
