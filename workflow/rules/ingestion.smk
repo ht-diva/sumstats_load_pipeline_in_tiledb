@@ -11,7 +11,7 @@ rule ingest_metadata:
         mongo_uri=config.get("mongo_uri"),
     shell:
         "gwasstudio "
-        "--mongo-uri {params.mongo_uri}"
+        "--mongo-uri {params.mongo_uri} "
         "meta_ingest "
         "--file_path {input}"
 
