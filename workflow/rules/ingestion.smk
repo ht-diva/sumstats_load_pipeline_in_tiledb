@@ -4,11 +4,14 @@ rule ingest_metadata:
     output:
         touch(ws_path("metadata_ingestion.done")),
     container:
-        "docker://ghcr.io/ht-diva/gwasstudio:d2c7c7"
+        "docker://ghcr.io/ht-diva/gwasstudio:874b867"
     resources:
         runtime=lambda wc, attempt: attempt * 60,
+    params:
+        mongo_uri=config.get("mongo_uri"),
     shell:
         "gwasstudio "
+        "--mongo-uri {params.mongo_uri}"
         "meta_ingest "
         "--file_path {input}"
 
@@ -19,7 +22,7 @@ rule ingest_dataset:
     output:
         touch(ws_path("outputs/{dataid}/{dataid}.done")),
     container:
-        "docker://ghcr.io/ht-diva/gwasstudio:d2c7c7"
+        "docker://ghcr.io/ht-diva/gwasstudio:874b867"
     resources:
         runtime=lambda wc, attempt: attempt * 60,
     params:
