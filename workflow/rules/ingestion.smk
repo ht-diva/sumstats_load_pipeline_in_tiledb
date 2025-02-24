@@ -4,7 +4,7 @@ rule ingest_metadata:
     output:
         touch(ws_path("metadata_ingestion.done")),
     container:
-        "docker://ghcr.io/ht-diva/gwasstudio:208a00"
+        "docker://ghcr.io/ht-diva/gwasstudio:768b8a"
     resources:
         runtime=lambda wc, attempt: attempt * 60,
     params:
@@ -22,7 +22,7 @@ rule ingest_dataset:
     output:
         touch(ws_path("outputs/{dataid}/{dataid}.done")),
     container:
-        "docker://ghcr.io/ht-diva/gwasstudio:208a00"
+        "docker://ghcr.io/ht-diva/gwasstudio:768b8a"
     resources:
         runtime=lambda wc, attempt: attempt * 60,
     params:
