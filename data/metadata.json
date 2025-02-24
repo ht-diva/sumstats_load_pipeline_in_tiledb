@@ -1,0 +1,10 @@
+[
+    {
+        "project": "TEST",
+        "data_id": "277b73f3c4ff77abb1c8a508ecc6b1cbec7ab7e928fbeb6d2b800af470ddbc48",
+        "category": "GWAS",
+        "total_samples": 35896,
+        "population": "UK",
+        "build": "GRCh37"
+    }
+]

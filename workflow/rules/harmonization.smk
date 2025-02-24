@@ -9,9 +9,9 @@ rule harmonize_sumstats:
         format=config.get("params").get("harmonize_sumstats").get("input_format"),
         config_file=config.get("params").get("harmonize_sumstats").get("config_file"),
         output_path=config.get("workspace_path"),
-        study_label=lambda wc: wc.dataid.split(".")[0].replace("ukb", "UKB"),
+        study_label="{dataid}",
     resources:
-        runtime=lambda wc, attempt: attempt * 60,
+        runtime=lambda wc, attempt: attempt * 180,
     shell:
         "gwaspipe "
         "-f {params.format} "

@@ -1,10 +1,12 @@
 run:
-  liftover: True
+  liftover: False
 
 # paths
 workspace_path: 'results'
-sumstats_path: 'config/local.txt'
-metadata_file: 'data/metadata.json'
+input_file: 'config/example.tsv'
+uri: 'file:///~/tiledb'
+mongo_uri: 'mongodb://localhost:27017/tiledb'
+
 chain_file: '/group/diangelantonio/public_data/liftOver/hg19ToHg38.over.chain.gz'
 log: 'logfile_liftover'
 hg37_fasta_fai_file: '/group/diangelantonio/public_data/liftOver/human_g1k_v37.fasta.fai'

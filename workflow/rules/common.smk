@@ -4,23 +4,16 @@ import pandas as pd
 
 # Define input for the rules
 data = []
-with open(config["sumstats_path"], "r") as fp:
-    lines = fp.readlines()
+with open(config["input_file"], "r") as fp:
+    df = pd.read_csv(fp, sep="\t")
+    df["file_path"] = df["file_path"].apply(Path)
+    df["dataid"] = df["file_path"].apply(lambda x: x.stem.split(".")[:1]).str[0]
 
-for line in lines:
-    p = Path(line.strip())
-    dataid = ".".join(p.stem.split(".")[:1])
-    data.append((dataid, str(p)))
-
-records = (
-    pd.DataFrame.from_records(data, columns=["dataid", "sumstat_path"])
-    .set_index("dataid", drop=False)
-    .sort_index()
-)
+records = df[["dataid", "file_path"]].set_index("dataid", drop=False).sort_index()
 
 
 def get_sumstats(wildcards):
-    return records.loc[wildcards.dataid, "sumstat_path"]
+    return records.loc[wildcards.dataid, "file_path"]
 
 
 def ws_path(file_path):
