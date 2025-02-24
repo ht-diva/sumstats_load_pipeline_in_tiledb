@@ -61,14 +61,15 @@ steps:
       workspace_subfolder: True
     gl_params:
       fmt: "gwaslab"
+      xymt_number: True
       to_csvargs:
         compression:
           method: "gzip"
           compresslevel: 1
           mtime: 1
       float_formats:
-        BETA: '{:.5f}'
-        SE: '{:.5f}'
+        BETA: '{:.9f}'
+        SE: '{:.9f}'
         MLOG10P: '{:.5f}'
         EAF: '{:.5f}'
 
