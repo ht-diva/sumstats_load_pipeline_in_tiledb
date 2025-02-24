@@ -4,7 +4,7 @@ run:
 # paths
 workspace_path: 'results'
 input_file: 'config/example.tsv'
-uri: 'file://~/tiledb'
+uri: 'file:///~/tiledb'
 mongo_uri: 'mongodb://localhost:27017/tiledb'
 
 chain_file: '/group/diangelantonio/public_data/liftOver/hg19ToHg38.over.chain.gz'
