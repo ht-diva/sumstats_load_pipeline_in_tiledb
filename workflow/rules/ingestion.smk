@@ -1,6 +1,6 @@
 rule ingest_metadata:
     input:
-        metadata=ws_path("metadata_ingestion.tsv"),
+        metadata=get_metadata_ingestion_file(),
         harmonized=expand(rules.harmonize_sumstats.output, dataid=records.dataid),
     output:
         touch(ws_path("metadata_ingestion.done")),
