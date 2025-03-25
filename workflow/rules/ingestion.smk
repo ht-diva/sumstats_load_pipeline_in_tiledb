@@ -1,6 +1,7 @@
 rule ingest_metadata:
     input:
-        config.get("input_file"),
+        metadata=ws_path("metadata_ingestion.tsv"),
+        harmonized=expand(rules.harmonize_sumstats.output, dataid=records.dataid),
     output:
         touch(ws_path("metadata_ingestion.done")),
     container:
@@ -13,7 +14,7 @@ rule ingest_metadata:
         "gwasstudio "
         "--mongo-uri {params.mongo_uri} "
         "meta_ingest "
-        "--file_path {input}"
+        "--file_path {input.metadata}"
 
 
 rule ingest_dataset:
