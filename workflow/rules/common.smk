@@ -29,15 +29,6 @@ with open(config["input_file"], "r") as fp:
 
 records = df[["dataid", "file_path"]].set_index("dataid", drop=False).sort_index()
 
-with open(config["input_file"], "r") as fp:
-    df = pd.read_csv(fp, sep="\t")
-    df["file_path"] = df["file_path"].apply(Path)
-    df["dataid"] = df["file_path"].apply(lambda x: x.stem.split(".")[:1]).str[0]
-    df["file_path"] = df["dataid"].apply(
-        lambda x: ws_path(f"outputs/{x}/{x}.gwaslab.tsv.gz")
-    )
-    df.to_csv(ws_path("metadata_ingestion.tsv"), sep="\t", index=False)
-
 
 def get_sumstats(wildcards):
     return records.loc[wildcards.dataid, "file_path"]
