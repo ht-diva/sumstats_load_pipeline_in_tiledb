@@ -1,10 +1,11 @@
 rule ingest_metadata:
     input:
-        config.get("input_file"),
+        metadata=get_metadata_ingestion_file(),
+        harmonized=expand(rules.harmonize_sumstats.output, dataid=records.dataid),
     output:
         touch(ws_path("metadata_ingestion.done")),
     container:
-        "docker://ghcr.io/ht-diva/gwasstudio:c63dd3"
+        "docker://ghcr.io/ht-diva/gwasstudio:3a21d0"
     resources:
         runtime=lambda wc, attempt: attempt * 60,
     params:
@@ -12,8 +13,8 @@ rule ingest_metadata:
     shell:
         "gwasstudio "
         "--mongo-uri {params.mongo_uri} "
-        "meta_ingest "
-        "--file_path {input}"
+        "meta-ingest "
+        "--file-path {input.metadata}"
 
 
 rule ingest_dataset:
@@ -22,7 +23,7 @@ rule ingest_dataset:
     output:
         touch(ws_path("outputs/{dataid}/{dataid}.done")),
     container:
-        "docker://ghcr.io/ht-diva/gwasstudio:c63dd3"
+        "docker://ghcr.io/ht-diva/gwasstudio:3a21d0"
     resources:
         runtime=lambda wc, attempt: attempt * 60,
     params:

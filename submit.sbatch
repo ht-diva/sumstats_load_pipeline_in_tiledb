@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=${USER}@fht.org
-#SBATCH --job-name pqtl_downstream_pipeline
-#SBATCH --output %j_pqtl_downstream_pipeline.log
+#SBATCH --job-name cdh_load_pipeline
+#SBATCH --output %j_cdh_load_pipeline.log
 #SBATCH --partition cpuq
 #SBATCH --cpus-per-task 1
 #SBATCH --mem 8G
