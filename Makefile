@@ -5,7 +5,7 @@ HN=$(shell hostname | sed "s/[0-9]//g")
 
 
 ifeq ($(HN),$(filter $(HN),cnode gnode hnode))
-  CONDA_ENV_NAME=/group/soranzo/bruno.ariano/snakemake_env
+  CONDA_ENV_NAME=/project/snip/envs/snakemake
 else
   CONDA_ENV_NAME=snakemake
 endif
@@ -19,9 +19,6 @@ dag:
 
 dependencies:
 	mamba env update -n snakemake --file environment.yml
-
-dev-dependencies: dependencies
-	mamba env update -n snakemake --file environment_dev.yml
 
 dry-run:
 	source $(CONDA_ENV_DIR)/activate $(CONDA_ENV_NAME) && \
