@@ -6,6 +6,11 @@ workspace_path: 'results'
 input_file: 'config/example.tsv'
 uri: 'file:///~/tiledb'
 mongo_uri: 'mongodb://localhost:27017/tiledb'
+vault_auth: null
+vault_mount_point: null 
+vault_path: null
+vault_token: null
+vault_url: null
 
 chain_file: '/group/diangelantonio/public_data/liftOver/hg19ToHg38.over.chain.gz'
 log: 'logfile_liftover'
